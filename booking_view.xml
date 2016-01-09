@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <!-- Travel search view -->
+
+        <record id="booking_search" model="ir.ui.view">
+            <field name="name">booking.search</field>
+            <field name="model">booking.management</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Booking search">
+                    <field name="name" string="Name of the room" />
+                    <field name="price" string="Price of the room" />
+                    <field name="guests" string="Number of guests" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Travel tree view -->
+
+        <record id="booking_management_tree" model="ir.ui.view">
+            <field name="name">booking.hostel.tree</field>
+            <field name="model">booking.management</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Hostel rooms">
+                    <field name="name" />
+                    <field name="price" />
+                    <field name="guests" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Travel form view -->
+
+        <record id="booking_management_form" model="ir.ui.view">
+            <field name="name">booking.hostel.form</field>
+            <field name="model">booking.management</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Hostel rooms">
+                    <field name="name" />
+                    <field name="price" />
+                    <field name="guests" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Travel action -->
+
+        <record id="action_booking_management" model="ir.actions.act_window">
+            <field name="name">Room info</field>
+            <field name="res_model">booking.management</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Travel menu -->
+
+        <menuitem id="booking_parent" name="Booking" />
+        <menuitem id="menu_booking_parent" name="Booking management" parent="booking_parent" />
+        <menuitem action="action_booking_management" id="menu_booking_management" parent="menu_booking_parent" name="Room info" />
+
+    </data>
+</openerp>
