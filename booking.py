@@ -1,11 +1,11 @@
 from osv import orm, fields, osv
 
 
-class booking_management(orm.Model):
-    _name = 'booking.management'
+class booking_info(orm.Model):
+    _name = 'booking.info'
     # _inherit = 'res.partner'
 
-    _description = 'Booking management'
+    _description = 'Room info'
 
     _columns = {
         # 'rooms_id': fields.one2many('travel.room', 'hostel_id', 'Rooms'),
@@ -22,8 +22,8 @@ class booking_management(orm.Model):
     }
 
     def _check_name(self, cr, uid, ids, context=None):
-        for booking_management in self.browse(cr, uid, ids, context=None):
-            if 'spam' in booking_management.name:
+        for booking_info in self.browse(cr, uid, ids, context=None):
+            if 'spam' in booking_info.name:
                 return False
         return True
 
