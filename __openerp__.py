@@ -12,7 +12,8 @@
         'resource'
     ],
     'data': [
-        'booking_view.xml'
+        'rooms_info_view.xml',
+        'booking_management_view.xml',
     ],
     'demo': [],
     'test': [],

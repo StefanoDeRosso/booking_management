@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <!-- Travel search view -->
+
+        <record id="room_search" model="ir.ui.view">
+            <field name="name">room.search</field>
+            <field name="model">room.info</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Room search">
+                    <field name="name" string="Name of the room" />
+                    <field name="price" string="Price of the room" />
+                    <field name="guests" string="Number of guests" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Travel tree view -->
+
+        <record id="room_info_tree" model="ir.ui.view">
+            <field name="name">room.hostel.tree</field>
+            <field name="model">room.info</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Hostel rooms">
+                    <field name="name" />
+                    <field name="price" />
+                    <field name="guests" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Travel form view -->
+
+        <record id="room_info_form" model="ir.ui.view">
+            <field name="name">room.hostel.form</field>
+            <field name="model">room.info</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Hostel rooms">
+                    <field name="name" />
+                    <field name="price" />
+                    <field name="guests" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Travel action -->
+
+        <record id="action_room_info" model="ir.actions.act_window">
+            <field name="name">Room info</field>
+            <field name="res_model">room.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Travel menu -->
+
+        <menuitem id="booking_parent" name="Booking" />
+        <menuitem id="menu_travel_parent" name="Travel management" parent="booking_parent" />
+        <menuitem action="action_room_info" id="menu_room_info" parent="menu_travel_parent" name="Room info" />
+
+    </data>
+</openerp>
