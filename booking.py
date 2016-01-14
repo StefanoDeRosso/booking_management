@@ -10,7 +10,7 @@ class booking_info(orm.Model):
     _columns = {
         # 'rooms_id': fields.one2many('travel.room', 'hostel_id', 'Rooms'),
         'name': fields.char('Name'),
-        'room_type': fields.char('Room type', size=16),
+        'room_type': fields.char('Room type', required=True),
         'price': fields.float('Price'),
         'guests': fields.integer('Guests'),
         'active': fields.boolean('Active')
@@ -27,6 +27,15 @@ class booking_info(orm.Model):
                 return False
         return True
 
+    '''
+    def onchange_room_type(self, cr, uid, ids, room_type, context=None):
+        value = {'parent_id': False}
+        if room_type:
+            room = self.pool.get('room.info').browse(cr, uid, room_type)
+            value['room_type'] = room.id
+        return {'value': value}
+    '''
+
     # _sql_constraints = [('rooms_id_uniq', unique('rooms_id'), 'Rooms must be unique!')]
     _constraints = [(_check_name, 'Please avoid spam in rooms_id!', ['name'])]
 
@@ -42,7 +51,9 @@ class booking_management(orm.Model):
         'guests': fields.integer('Number of guests', required=True),
         'email': fields.char('Email'),
         'check_in': fields.date('From', required=True),
-        'check_out': fields.date('To', required=True)
+        'check_out': fields.date('To', required=True),
+        'special_requests': fields.text('Special requests'),
+        'name': fields.many2one('room.info', 'Room', required=True)
     }
 
     def _check_name(self, cr, uid, ids, context=None):

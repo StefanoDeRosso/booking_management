@@ -32,6 +32,8 @@
                     <field name="email" />
                     <field name="check_in" />
                     <field name="check_out" />
+                    <field name="special_requests" />
+                    <!-- <field name="room_type" /> -->
                 </tree>
             </field>
         </record>
@@ -51,6 +53,8 @@
                     <field name="email" />
                     <field name="check_in" />
                     <field name="check_out" />
+                    <field name="special_requests" />
+                    <!-- <field name="room_type" on_change="onchange_user(room_type)"/> -->
                 </tree>
             </field>
         </record>
