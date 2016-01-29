@@ -1,14 +1,13 @@
-from osv import orm, fields, osv
+from osv import orm, fields
 
 
-class booking_info(orm.Model):
+class RoomInfo(orm.Model):
     _name = 'room.info'
     # _inherit = 'res.partner'
 
     _description = 'Room info'
 
     _columns = {
-        # 'rooms_id': fields.one2many('travel.room', 'hostel_id', 'Rooms'),
         'name': fields.char('Name'),
         'room_type': fields.char('Room type', required=True),
         'price': fields.float('Price'),
@@ -27,20 +26,13 @@ class booking_info(orm.Model):
                 return False
         return True
 
-    '''
-    def onchange_room_type(self, cr, uid, ids, room_type, context=None):
-        value = {'parent_id': False}
-        if room_type:
-            room = self.pool.get('room.info').browse(cr, uid, room_type)
-            value['room_type'] = room.id
-        return {'value': value}
-    '''
-
-    # _sql_constraints = [('rooms_id_uniq', unique('rooms_id'), 'Rooms must be unique!')]
     _constraints = [(_check_name, 'Please avoid spam in rooms_id!', ['name'])]
 
-class booking_management(orm.Model):
+
+class BookingManagement(orm.Model):
     _name = 'booking.management'
+
+    _inherit = 'res.partner.address'
 
     _description = 'Booking management'
 
@@ -53,11 +45,5 @@ class booking_management(orm.Model):
         'check_in': fields.date('From', required=True),
         'check_out': fields.date('To', required=True),
         'special_requests': fields.text('Special requests'),
-        'name': fields.many2one('room.info', 'Room', required=True)
+        'name': fields.many2one('room.info', 'Room', required=False)
     }
-
-    def _check_name(self, cr, uid, ids, context=None):
-        for booking_management in self.browse(cr, uid, ids, context=None):
-            if 'spam' in booking_management.name:
-                return False
-        return True

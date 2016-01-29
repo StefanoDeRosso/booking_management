@@ -17,7 +17,7 @@
     ],
     'demo': [],
     'test': [],
-    #'auto_install': False,
+    # 'auto_install': False,
     'active': False,
     'installable': True,
 }
