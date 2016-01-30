@@ -11,7 +11,6 @@
             <field name="arch" type="xml">
                 <search string="Booking search">
                     <field name="first_name" string="Name of the guest" />
-                    <field name="tel" string="Telephone number" />
                     <field name="guests" string="Number of guests" />
                 </search>
             </field>
@@ -25,11 +24,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Hostel rooms">
-                    <field name="first_name" />
-                    <field name="last_name" />
-                    <field name="tel" />
                     <field name="guests" />
-                    <field name="email" />
                     <field name="check_in" />
                     <field name="check_out" />
                     <field name="special_requests" />
@@ -46,11 +41,7 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Hostel rooms">
-                    <field name="first_name" />
-                    <field name="last_name" />
-                    <field name="tel" />
                     <field name="guests" />
-                    <field name="email" />
                     <field name="check_in" />
                     <field name="check_out" />
                     <field name="special_requests" />

@@ -32,18 +32,13 @@ class RoomInfo(orm.Model):
 class BookingManagement(orm.Model):
     _name = 'booking.management'
 
-    _inherit = 'res.partner.address'
+    _inherit = 'res.partner.address.contact'
 
     _description = 'Booking management'
 
     _columns = {
-        'first_name': fields.char('First name', required=True),
-        'last_name': fields.char('Last name', required=True),
-        'tel': fields.char('Telephone number', size=32, readonly=False, required=True),
         'guests': fields.integer('Number of guests', required=True),
-        'email': fields.char('Email'),
         'check_in': fields.date('From', required=True),
         'check_out': fields.date('To', required=True),
-        'special_requests': fields.text('Special requests'),
-        'name': fields.many2one('room.info', 'Room', required=False)
+        'special_requests': fields.text('Special requests')
     }
